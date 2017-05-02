@@ -1,0 +1,1 @@
+1. Use req.path to get the url path.
