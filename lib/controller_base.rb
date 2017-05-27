@@ -21,7 +21,7 @@ class ControllerBase
     if already_built_response?
       raise "Error - Double Response"
     else
-      @res.set_header("Location", url)
+      @res['Location'] = url
       @res.status = 302
       session.store_session(@res)
       @already_built_response = true
@@ -53,6 +53,10 @@ class ControllerBase
 
   def session
     @session ||= Session.new(@req)
+  end
+
+  def flash
+    @flash ||= Flash.new(@req)
   end
 
   def invoke_action(name)
